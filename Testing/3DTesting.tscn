@@ -18,8 +18,6 @@ shader_parameter/bleed_strength = 1.0
 [sub_resource type="ViewportTexture" id="ViewportTexture_j5gku"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="GDScript" id="GDScript_k52ss"]
-
 [sub_resource type="Environment" id="Environment_80goa"]
 background_mode = 1
 background_color = Color(0.023529412, 1, 1, 1)
@@ -37,11 +35,13 @@ adjustment_contrast = 1.1
 adjustment_saturation = 1.16
 
 [sub_resource type="BoxMesh" id="BoxMesh_4ov15"]
+size = Vector3(1, 1.6749268, 3.0024414)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_80goa"]
 albedo_color = Color(0.99915177, 0, 0.14419135, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j5gku"]
+size = Vector3(1, 1.5211792, 2.9888916)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_02v5s"]
 albedo_color = Color(0.3484128, 0.8388446, 0.1849586, 1)
@@ -66,11 +66,10 @@ texture = SubResource("ViewportTexture_j5gku")
 handle_input_locally = false
 screen_space_aa = 2
 use_hdr_2d = true
-positional_shadow_atlas_size = 128
+positional_shadow_atlas_size = 1024
 positional_shadow_atlas_16_bits = false
 size = Vector2i(216, 184)
 render_target_update_mode = 4
-script = SubResource("GDScript_k52ss")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewport" unique_id=87922273]
 environment = SubResource("Environment_80goa")
@@ -78,9 +77,8 @@ environment = SubResource("Environment_80goa")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport" unique_id=685893858]
 transform = Transform3D(1, 0, 0, 0, 0.9148156, 0.40387174, 0, -0.40387174, 0.9148156, 0, 2.0431104, 2.2047784)
 light_color = Color(0.72642416, 0.39102647, 0.19655994, 1)
-light_energy = 1.465
 shadow_enabled = true
-shadow_blur = 6.775
+shadow_blur = 2.761
 
 [node name="Floor" type="MeshInstance3D" parent="SubViewport" unique_id=522502731]
 transform = Transform3D(28.37708, 0, 0, 0, 0.09190595, 0, 0, 0, 31.389587, 0, 0, 0)
@@ -93,23 +91,25 @@ surface_material_override/0 = SubResource("StandardMaterial3D_80goa")
 shape = SubResource("BoxShape3D_j5gku")
 
 [node name="Object" type="MeshInstance3D" parent="SubViewport" unique_id=246915604]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9490337, 1.13065, -1.6149318)
+transform = Transform3D(0.6572594, 0, -0.75366443, 0, 1, 0, 0.75366443, 0, 0.6572594, -0.04815817, 0.8414984, -3.419732)
 mesh = SubResource("BoxMesh_4ov15")
 surface_material_override/0 = SubResource("StandardMaterial3D_02v5s")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="SubViewport/Object" unique_id=428653959]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/Object/StaticBody3D" unique_id=954898472]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4305115e-06, 0.07546997, 0.0076298714)
 shape = SubResource("BoxShape3D_j5gku")
 
 [node name="Object2" type="MeshInstance3D" parent="SubViewport" unique_id=1411328578]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33883905, 1.13065, -0.63269365)
+transform = Transform3D(0.51592904, 0, -0.85663134, 0, 1, 0, 0.85663134, 0, 0.51592904, -2.0510244, 0.10393143, -0.103355765)
 mesh = SubResource("BoxMesh_4ov15")
 surface_material_override/0 = SubResource("StandardMaterial3D_bu4r3")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="SubViewport/Object2" unique_id=651098381]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/Object2/StaticBody3D" unique_id=1782364403]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1920929e-07, 0.18511963, 0.01135242)
 shape = SubResource("BoxShape3D_j5gku")
 
 [node name="Object3" type="MeshInstance3D" parent="SubViewport" unique_id=1273747273]
@@ -147,21 +147,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6941583, 0.9130105, 2.08259
 script = ExtResource("1_k52ss")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewport/CharacterBody3D" unique_id=2044025351]
+transform = Transform3D(1.28, 0, 0, 0, 1.28, 0, 0, 0, 1.28, 0, 0.27899837, 0)
 mesh = SubResource("CapsuleMesh_j5gku")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/CharacterBody3D" unique_id=1752816951]
+transform = Transform3D(1.28, 0, 0, 0, 1.28, 0, 0, 0, 1.28, 0, 0.27899837, 0)
 shape = SubResource("CapsuleShape3D_4ov15")
 
 [node name="Neck" type="Node3D" parent="SubViewport/CharacterBody3D" unique_id=918526543]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5914476, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0285971, 0)
 
 [node name="Camera3D" type="Camera3D" parent="SubViewport/CharacterBody3D/Neck" unique_id=589088422]
 current = true
 
 [node name="OmniLight3D" type="OmniLight3D" parent="SubViewport" unique_id=1867891376]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9002295, 0.93938255, -2.5775747)
-light_color = Color(0.8532788, 0.0017689014, 0.9907816, 1)
-light_energy = 6.702
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6399653, 2.7278895, -4.2338953)
+light_color = Color(0.80875677, 0.0010685027, 0.89064574, 1)
+light_energy = 10.467
+light_size = 0.117
 shadow_enabled = true
-shadow_blur = 2.35
-omni_range = 7.481
+shadow_blur = 4.152
+omni_range = 4096.0
